@@ -1,0 +1,78 @@
+version: '3'
+services:
+
+  httpservergp:
+    build:
+      context: docker/php83-apache
+    image: php83apache:prex
+    container_name: httpserverprex
+    hostname: httpserverprex
+    restart: unless-stopped
+    environment:
+      - TZ=Etc/UTC
+    tty: true
+    working_dir: /var/www
+    ports:
+      - "80:80"
+    depends_on:
+      - mysqldb
+    volumes:
+      - "./../src/:/var/www/"
+      - "./etc/php/local.ini:/usr/local/etc/php/conf.d/local.ini"
+      - "./etc/apache/000-dev.conf:/etc/apache2/sites-enabled/000-default.conf"
+      - "./etc/supervisor/:/etc/supervisor/conf.d/"
+    networks:
+      public_net:
+        ipv4_address: ${HTTPSERVER_IP}
+
+  mysqldb:
+    image: mysql:5.7.22
+    container_name: mysqldb
+    hostname: mysqldb
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: demoprex
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+      TZ: Etc/UTC
+    volumes:
+      - mysqldb:/var/lib/mysql/
+      - ./etc/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      public_net:
+        ipv4_address: ${MYSQLDB_IP}
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    command: redis-server --requirepass "local_redis"
+    volumes:
+      - redisdata:/data
+      - ./etc/redis/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+    networks:
+      public_net:
+        ipv4_address: ${REDIS_IP}
+
+#Docker Networks
+networks:
+  public_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${NETWORK_SUBNET}
+
+#Volumes
+volumes:
+  mysqldb:
+    driver: local
+  redisdata:
+    driver: local
