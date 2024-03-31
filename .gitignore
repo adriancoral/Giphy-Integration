@@ -37,6 +37,7 @@ local.properties
 
 # phpstorm webstorm
 .idea/
+.fleet
 
 # textmate
 *.tmproj

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HealthCheckController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('healthcheck', [HealthCheckController::class, 'healthcheck'])->name('healthcheck');
+
+
+Route::fallback(function () {
+    return response()->json(['success' => false, 'message' => 'Route not be found'], 404);
+});
+
+
