@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HealthCheckController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,15 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('healthcheck', [HealthCheckController::class, 'healthcheck'])->name('healthcheck')->name('healthcheck');
+
+Route::post('login', [AuthController::class, 'login'])->name('user.login');
+Route::post('register', [AuthController::class, 'register'])->name('user.register');
+
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('me', [AuthController::class, 'me'])->name('user.me');
 });
 
-Route::get('healthcheck', [HealthCheckController::class, 'healthcheck'])->name('healthcheck');
-
-
-Route::fallback(function () {
+/*Route::fallback(function () {
     return response()->json(['success' => false, 'message' => 'Route not be found'], 404);
-});
+});*/
 
 

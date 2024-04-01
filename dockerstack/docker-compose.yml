@@ -9,7 +9,7 @@ services:
     hostname: httpserverprex
     restart: unless-stopped
     environment:
-      - TZ=Etc/UTC
+      - TZ=America/Argentina/Buenos_Aires
     tty: true
     working_dir: /var/www
     ports:
@@ -40,7 +40,7 @@ services:
       MYSQL_PASSWORD: password
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
-      TZ: Etc/UTC
+      TZ: America/Argentina/Buenos_Aires
     volumes:
       - mysqldb:/var/lib/mysql/
       - ./etc/mysql/my.cnf:/etc/mysql/my.cnf
@@ -52,6 +52,8 @@ services:
     image: redis:alpine
     container_name: redis
     command: redis-server --requirepass "local_redis"
+    environment:
+        - TZ=America/Argentina/Buenos_Aires
     volumes:
       - redisdata:/data
       - ./etc/redis/redis.conf:/usr/local/etc/redis/redis.conf

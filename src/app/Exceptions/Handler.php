@@ -40,11 +40,11 @@ class Handler extends ExceptionHandler
      * @return JsonResponse|RedirectResponse|Response|\Symfony\Component\HttpFoundation\Response
      * @throws Throwable
      */
-    public function render($request, Throwable $e)
+    /*public function render($request, Throwable $e)
     {
         /*if ($request->expectsJson()) {
             return $this->handleThrowable($request, $e);
-        }*/
+        }
         return parent::render($request, $e);
-    }
+    }*/
 }
