@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "81501540-2b52-4079-831e-d895e2ee23ae",
+		"name": "Giphy integration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1586537"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@sample.net\",\n\t\"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Pedro\",\n    \"email\": \"pedro@hotmail.net\",\n\t\"password\": \"mypassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzRmMzllNDQwYTUwYThmMDgzN2JlNmVhNzdjOTZhMDhjZTZhYjhkYzM0YWNiNWNlYjMzOGQzZTNlY2I2ZjkxNTUzMTI1MDdjNDg3Y2ZiOTQiLCJpYXQiOjE3MTIxNzAzODkuNDU1ODM5LCJuYmYiOjE3MTIxNzAzODkuNDU1ODQ5LCJleHAiOjE3MTIxNzIxODkuNDUwMDM3LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.fGOCMJak68GD2QCHTLYQAma_I3gcFqUQJZDXqROC0RJ8H5HRvQgAbiMBRzuDKLx-G9_8-bOuxqKRntlClucvbZC8h5TKkkG120ImKd5lUOA1V-MY5rne7RRbH9EvzRfWPw9-bZjtbioSJmBhCS7g6jIHv9M07G1KSwk1T4UL2Lhhwgu4lViidtA6eS2JBtFZeW6huOfHjTQ5ZjCiNC3j1Ob3m8PnDqXKFzFWCRxAPzSyYYTzYO3ew1rvi_K82_Mr7ULKiSnDj90nym0z4ov3a_TPrdmAcdMOMzuSGFnxVU242_931Aj5uS0pRi6eCFkg5Lg1pZkYHxfOIpiNG_3Ep1ShQiHgfQOoMsMAHSydtFek8zXJTClXi7f-EjtZsBiMbxN3VrJobslBTbkeEIxs7jchrBVaU-ZGuIMoKC6Ab2WlHB4i95sm4I36X3plOEfeS8jOhKfWVdCbVi2xGL2AqL5GVUtqOwieur-2kX-rqmPvqbljU6Hg90SO8o1LFlrpmGmnUgxyNI7G66YqIXn5RmqasPd2fGlwX3OMZ0qX-Dp_HSXprmi5DL4fVtRco-M2MGv62hGn5Z_Q7o9v-ZVUKi_qZ1BbdFi6wr2FwHpHKIRwyGze2Y0hO_BXSqJSC3nsVfBcUuVUqS6cW6MsDg2LJjPofGUWkLiOQPlPOvvVj5w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/user/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"user",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Giphy Search",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmUxN2M4NWM3MWYxNTE2YWM1MzQ4MTIwYjJiZmQ3MjVkMGY5NjIzNDNkNDY4ZjIxZWNjNDYxZmEyZmZhODExZDVhYTRmNzI0MzUyNmZhOTQiLCJpYXQiOjE3MTIxNzAzMzEuNTE5MzA0LCJuYmYiOjE3MTIxNzAzMzEuNTE5MzA2LCJleHAiOjE3MTIxNzIxMzEuNTE0NzgyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kbM8R8iAVVQBrDOxSbN0V81umrItkf_NRAAWnG8B7T3GG2tWf1X3okbNI_ae6H79XjpBd-8coJFv1FZMTUBybj5BPf_8_4NQzTHKVGp2YC2yUtiVfKPGvKRwjtf1V8x4ouz2oCZV7ul_OvR09wRb2NevZiZt_fmW7ZZVf1-XZgs0w7LigEHDJ2xtWvbQxn0eCwbxA8G5IvRwgmdhhEWmw-kJZi6-YgX2n-i38UvioKv6uGUS5qgKFUaJuxwjqgfInPww81EqcQhHEkybMAfsy8L_jpvBcQqfKOeRRttBr9YXK5Eow8EzjOJZhkhyClLJ5TKeVszI7EjJtpHKwARVnDea5KrZPaOoJAXd3dXhzP9ReGba4Q5rz8ltAEaKNU4fZRqbrAP51iQcx7XJnHJlURHJ7qtW83TzmoI6xfpili1ZRfM-bqGC_PSj479WQ5tqMZr-DqbDYunLETjdSl2dQhC5b3YwelJMJGKydk_6GQoubsi6-04UlDGVjxSRvcR66Cd7SJ2WW1e-A1vp-fTfaCFh2WSV1iUuEdyGWcfyDoRUQEaps8UdUU14VksQuN9wdaiRhLkP4t1L0JyY14vKAu8EeVtH3fPE8A2Ohv8epeyzN3Fb7GjRgT3TRWjD9E577C9OkiYUmqZO-qFoIU96HRejQvcpeysq8GURW7O8_tg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"q\": \"avion\",\n\t\"limit\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/giphy/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"giphy",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Giphy Gifs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmUxN2M4NWM3MWYxNTE2YWM1MzQ4MTIwYjJiZmQ3MjVkMGY5NjIzNDNkNDY4ZjIxZWNjNDYxZmEyZmZhODExZDVhYTRmNzI0MzUyNmZhOTQiLCJpYXQiOjE3MTIxNzAzMzEuNTE5MzA0LCJuYmYiOjE3MTIxNzAzMzEuNTE5MzA2LCJleHAiOjE3MTIxNzIxMzEuNTE0NzgyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kbM8R8iAVVQBrDOxSbN0V81umrItkf_NRAAWnG8B7T3GG2tWf1X3okbNI_ae6H79XjpBd-8coJFv1FZMTUBybj5BPf_8_4NQzTHKVGp2YC2yUtiVfKPGvKRwjtf1V8x4ouz2oCZV7ul_OvR09wRb2NevZiZt_fmW7ZZVf1-XZgs0w7LigEHDJ2xtWvbQxn0eCwbxA8G5IvRwgmdhhEWmw-kJZi6-YgX2n-i38UvioKv6uGUS5qgKFUaJuxwjqgfInPww81EqcQhHEkybMAfsy8L_jpvBcQqfKOeRRttBr9YXK5Eow8EzjOJZhkhyClLJ5TKeVszI7EjJtpHKwARVnDea5KrZPaOoJAXd3dXhzP9ReGba4Q5rz8ltAEaKNU4fZRqbrAP51iQcx7XJnHJlURHJ7qtW83TzmoI6xfpili1ZRfM-bqGC_PSj479WQ5tqMZr-DqbDYunLETjdSl2dQhC5b3YwelJMJGKydk_6GQoubsi6-04UlDGVjxSRvcR66Cd7SJ2WW1e-A1vp-fTfaCFh2WSV1iUuEdyGWcfyDoRUQEaps8UdUU14VksQuN9wdaiRhLkP4t1L0JyY14vKAu8EeVtH3fPE8A2Ohv8epeyzN3Fb7GjRgT3TRWjD9E577C9OkiYUmqZO-qFoIU96HRejQvcpeysq8GURW7O8_tg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ids\": \"L1cdLhPrp9wAL1CbQU\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/giphy/gifs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"giphy",
+						"gifs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Me",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmUxN2M4NWM3MWYxNTE2YWM1MzQ4MTIwYjJiZmQ3MjVkMGY5NjIzNDNkNDY4ZjIxZWNjNDYxZmEyZmZhODExZDVhYTRmNzI0MzUyNmZhOTQiLCJpYXQiOjE3MTIxNzAzMzEuNTE5MzA0LCJuYmYiOjE3MTIxNzAzMzEuNTE5MzA2LCJleHAiOjE3MTIxNzIxMzEuNTE0NzgyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kbM8R8iAVVQBrDOxSbN0V81umrItkf_NRAAWnG8B7T3GG2tWf1X3okbNI_ae6H79XjpBd-8coJFv1FZMTUBybj5BPf_8_4NQzTHKVGp2YC2yUtiVfKPGvKRwjtf1V8x4ouz2oCZV7ul_OvR09wRb2NevZiZt_fmW7ZZVf1-XZgs0w7LigEHDJ2xtWvbQxn0eCwbxA8G5IvRwgmdhhEWmw-kJZi6-YgX2n-i38UvioKv6uGUS5qgKFUaJuxwjqgfInPww81EqcQhHEkybMAfsy8L_jpvBcQqfKOeRRttBr9YXK5Eow8EzjOJZhkhyClLJ5TKeVszI7EjJtpHKwARVnDea5KrZPaOoJAXd3dXhzP9ReGba4Q5rz8ltAEaKNU4fZRqbrAP51iQcx7XJnHJlURHJ7qtW83TzmoI6xfpili1ZRfM-bqGC_PSj479WQ5tqMZr-DqbDYunLETjdSl2dQhC5b3YwelJMJGKydk_6GQoubsi6-04UlDGVjxSRvcR66Cd7SJ2WW1e-A1vp-fTfaCFh2WSV1iUuEdyGWcfyDoRUQEaps8UdUU14VksQuN9wdaiRhLkP4t1L0JyY14vKAu8EeVtH3fPE8A2Ohv8epeyzN3Fb7GjRgT3TRWjD9E577C9OkiYUmqZO-qFoIU96HRejQvcpeysq8GURW7O8_tg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/user/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"user",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Favorite",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmUxN2M4NWM3MWYxNTE2YWM1MzQ4MTIwYjJiZmQ3MjVkMGY5NjIzNDNkNDY4ZjIxZWNjNDYxZmEyZmZhODExZDVhYTRmNzI0MzUyNmZhOTQiLCJpYXQiOjE3MTIxNzAzMzEuNTE5MzA0LCJuYmYiOjE3MTIxNzAzMzEuNTE5MzA2LCJleHAiOjE3MTIxNzIxMzEuNTE0NzgyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kbM8R8iAVVQBrDOxSbN0V81umrItkf_NRAAWnG8B7T3GG2tWf1X3okbNI_ae6H79XjpBd-8coJFv1FZMTUBybj5BPf_8_4NQzTHKVGp2YC2yUtiVfKPGvKRwjtf1V8x4ouz2oCZV7ul_OvR09wRb2NevZiZt_fmW7ZZVf1-XZgs0w7LigEHDJ2xtWvbQxn0eCwbxA8G5IvRwgmdhhEWmw-kJZi6-YgX2n-i38UvioKv6uGUS5qgKFUaJuxwjqgfInPww81EqcQhHEkybMAfsy8L_jpvBcQqfKOeRRttBr9YXK5Eow8EzjOJZhkhyClLJ5TKeVszI7EjJtpHKwARVnDea5KrZPaOoJAXd3dXhzP9ReGba4Q5rz8ltAEaKNU4fZRqbrAP51iQcx7XJnHJlURHJ7qtW83TzmoI6xfpili1ZRfM-bqGC_PSj479WQ5tqMZr-DqbDYunLETjdSl2dQhC5b3YwelJMJGKydk_6GQoubsi6-04UlDGVjxSRvcR66Cd7SJ2WW1e-A1vp-fTfaCFh2WSV1iUuEdyGWcfyDoRUQEaps8UdUU14VksQuN9wdaiRhLkP4t1L0JyY14vKAu8EeVtH3fPE8A2Ohv8epeyzN3Fb7GjRgT3TRWjD9E577C9OkiYUmqZO-qFoIU96HRejQvcpeysq8GURW7O8_tg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"gif_id\": \"MDJ9IbxxvDUQM\",\n\t\"alias\": \"gato\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/favorite/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"favorite",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fav Index",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmUxN2M4NWM3MWYxNTE2YWM1MzQ4MTIwYjJiZmQ3MjVkMGY5NjIzNDNkNDY4ZjIxZWNjNDYxZmEyZmZhODExZDVhYTRmNzI0MzUyNmZhOTQiLCJpYXQiOjE3MTIxNzAzMzEuNTE5MzA0LCJuYmYiOjE3MTIxNzAzMzEuNTE5MzA2LCJleHAiOjE3MTIxNzIxMzEuNTE0NzgyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kbM8R8iAVVQBrDOxSbN0V81umrItkf_NRAAWnG8B7T3GG2tWf1X3okbNI_ae6H79XjpBd-8coJFv1FZMTUBybj5BPf_8_4NQzTHKVGp2YC2yUtiVfKPGvKRwjtf1V8x4ouz2oCZV7ul_OvR09wRb2NevZiZt_fmW7ZZVf1-XZgs0w7LigEHDJ2xtWvbQxn0eCwbxA8G5IvRwgmdhhEWmw-kJZi6-YgX2n-i38UvioKv6uGUS5qgKFUaJuxwjqgfInPww81EqcQhHEkybMAfsy8L_jpvBcQqfKOeRRttBr9YXK5Eow8EzjOJZhkhyClLJ5TKeVszI7EjJtpHKwARVnDea5KrZPaOoJAXd3dXhzP9ReGba4Q5rz8ltAEaKNU4fZRqbrAP51iQcx7XJnHJlURHJ7qtW83TzmoI6xfpili1ZRfM-bqGC_PSj479WQ5tqMZr-DqbDYunLETjdSl2dQhC5b3YwelJMJGKydk_6GQoubsi6-04UlDGVjxSRvcR66Cd7SJ2WW1e-A1vp-fTfaCFh2WSV1iUuEdyGWcfyDoRUQEaps8UdUU14VksQuN9wdaiRhLkP4t1L0JyY14vKAu8EeVtH3fPE8A2Ohv8epeyzN3Fb7GjRgT3TRWjD9E577C9OkiYUmqZO-qFoIU96HRejQvcpeysq8GURW7O8_tg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/favorite/index",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"favorite",
+						"index"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/healthcheck",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
