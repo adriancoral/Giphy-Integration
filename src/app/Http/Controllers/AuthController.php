@@ -6,9 +6,7 @@ use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Models\User;
 use App\Traits\ApiResponse;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -46,8 +44,20 @@ class AuthController extends Controller
         ]);
     }
 
-    public function me()
+    /**
+     * @return JsonResponse
+     */
+    public function me(): JsonResponse
     {
         return $this->successfulResponse(auth()->user());
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function logout(): JsonResponse
+    {
+        auth()->user()->token()->revoke();
+        return $this->successfulResponse('Logged out successfully');
     }
 }

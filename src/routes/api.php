@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\GiphyController;
 use App\Http\Controllers\HealthCheckController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,17 +17,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('healthcheck', [HealthCheckController::class, 'healthcheck'])->name('healthcheck')->name('healthcheck');
+Route::get('healthcheck', [HealthCheckController::class, 'healthcheck'])
+    ->name('healthcheck');
 
-Route::post('login', [AuthController::class, 'login'])->name('user.login');
-Route::post('register', [AuthController::class, 'register'])->name('user.register');
-
-Route::middleware(['auth:api'])->group(function () {
-    Route::get('me', [AuthController::class, 'me'])->name('user.me');
+Route::middleware(['request.history'])->prefix('user')->group(function () {
+    Route::post('login', [AuthController::class, 'login'])->name('user.login');
+    Route::post('register', [AuthController::class, 'register'])->name('user.register');
 });
 
-/*Route::fallback(function () {
-    return response()->json(['success' => false, 'message' => 'Route not be found'], 404);
-});*/
+Route::middleware(['auth:api', 'request.history'])->group(function () {
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('me', [AuthController::class, 'me'])->name('user.me');
+        Route::post('logout', [AuthController::class, 'logout'])->name('user.logout');
+    });
 
+    Route::group(['prefix' => 'giphy'], function () {
+        Route::post('search', [GiphyController::class, 'search'])->name('giphy.search');
+        Route::post('gifs', [GiphyController::class, 'gifs'])->name('giphy.gifs');
+    });
+
+    Route::group(['prefix' => 'favorite'], function () {
+        Route::post('add', [FavoriteController::class, 'add'])->name('favorite.add');
+        Route::get('index', [FavoriteController::class, 'index'])->name('favorite.index');
+    });
+});
 
