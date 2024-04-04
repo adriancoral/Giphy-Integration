@@ -162,9 +162,12 @@ La app implementa test unitarios y features con PHPUnit.
 # Ingresando al contenedor
 docker exec -it -u acoral  httpserverprex /bin/bash
 
+# Crear el archivo de base de datos de SQLIte
+touch database/database.sqlite
+
 # Run whole suite
 php artisan test 
-php artisan test --filter TournamentTest
+php artisan test --filter AuthControllerTest
 
 # Testing from host
 docker exec -it -u acoral httpserverprex php artisan test
